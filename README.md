@@ -1,22 +1,11 @@
 # Usage Guide
-
-## Installation
-1. // ...existing instructions for installing dependencies (e.g., npm install)...
-
-## Configuration
-- // ...instructions about environment variables, such as POSTGRES_USER, POSTGRES_PASSWORD...
+This is a fast desktop app builder with a SQL environment running in a Docker container. This can be used to train with SQL databases and language.
 
 ## Running the App
 1. Install dependencies: `npm install` will install all dependencies contained in `package.json`.
 2. If in WSL2 start Docker with `$sudo service docker start`
 3. Start the PostgreSQL container: `docker compose up -d`
 4. Run the application: `npm start`
-
-## Usage
-- // ...existing details about querying the database...
-
-## Running Queries
-- // ...steps to add a new query within app.js or a script...
 
 ## Example
 To verify that your PostgreSQL setup works correctly, try running a simple query that retrieves the current timestamp:
@@ -50,7 +39,10 @@ The connection errors occur because psql defaults to using the username as the d
 Try running the command:
 
 ```bash
-docker exec -it $(docker ps --filter "ancestor=postgres" -q) psql -U franco -d training
+docker exec -it $(docker ps --filter "ancestor=postgres" -q) psql -U [username] -d training
 ``` 
 
-This command explicitly connects to the "training" database as user "franco".
+This command explicitly connects to the "training" database as user "[username]".
+
+### Configuration
+To configure a secure SQL db access, usually is a good idea to store environment variables in an `.env` file or in Github Secrets.
