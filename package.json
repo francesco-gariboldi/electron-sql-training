@@ -3,10 +3,21 @@
     "version": "1.0.0",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js"
+        "start": "node app.js",
+        "docker:up": "docker compose up -d",
+        "docker:down": "docker compose down -v",
+        "server": "node server.js",
+        "web:dev": "npm --prefix web run dev",
+        "web:build": "npm --prefix web run build",
+        "dev": "concurrently \"npm run server\" \"npm run web:dev\""
     },
     "dependencies": {
+        "express": "^4.19.2",
         "pg": "^8.11.1",
-        "pq": "^0.0.3"
+        "pq": "^0.0.3",
+        "ws": "^8.17.0"
+    },
+    "devDependencies": {
+        "concurrently": "^9.0.1"
     }
 }

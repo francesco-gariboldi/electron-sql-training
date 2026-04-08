@@ -7,3 +7,15 @@ services:
       POSTGRES_DB: mydb
     ports:
       - "5432:5432"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@local
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
